@@ -22,6 +22,11 @@ services:
       MYSQL_PASSWORD: root1234
     ports:
       - "3316:3306"
+    deploy:
+      resources:
+        limits:
+          cpus: "6"
+          memory: 8096MB
     networks:
       - pre-event-network
 

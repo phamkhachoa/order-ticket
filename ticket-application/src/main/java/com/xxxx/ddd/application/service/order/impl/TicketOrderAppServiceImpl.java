@@ -31,7 +31,7 @@ public class TicketOrderAppServiceImpl implements TicketOrderAppService {
             return 0
         end
         redis.call('decr', stockKey)
-        return tonumber(stock)
+        return 1
         """;
 
     @Override
@@ -71,7 +71,7 @@ public class TicketOrderAppServiceImpl implements TicketOrderAppService {
             if (result != null && result == 1) {
                 // Add to order queue for async processing
                 log.info("Add order to queue ");
-                return ticketOrderDomainService.decreaseStockLevel2(ticketId, quantity);
+                return ticketOrderDomainService.decreaseStockLevel1(ticketId, quantity);
             }
 
             log.info("Out of stock");
